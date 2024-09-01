@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>1 Pesan!</title>
+    <style>
+        body {
+            background-image: url("assets/download.jpeg");
+        }
+    </style>
+</head>
+<body>
+    <div class="mx-auto" id="container-pesan">
+            <div class="message message-incoming" id="chat1">
+                <p>Halo, bagaimana kabarmu hari ini?</p>
+                <span class="timestamp">09:30</span>
+            </div>
+            <div class="message message-outgoing d-none" id="container_out1">
+                <p id="outgoing1"></p>
+                <span class="timestamp">09:31</span>
+            </div>
+    </div>
+
+    <div class="card m-5 fixed-bottom d-none" id="choose_point">
+        <div class="card-body text-center">
+            <h5 class="card-title">Pilih respon kamu!</h5>
+            <div class="message message-outgoing" onclick="setMessage1('Kabarku baik ^_^')">
+                <p>Kabarku baik ^_^</p>
+            </div>
+            <div class="message message-outgoing" onclick="setMessage1('Agak kurang nih hari ini T_T')">
+                <p>Agak kurang nih hari ini T_T</p>
+            </div>
+        </div>
+    </div>
+
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/animate-check.js"></script>
+<script>
+    function setMessage1(msg) {
+        document.getElementById("outgoing1").innerText = msg;
+        document.getElementById("container_out1").classList.remove("d-none");
+        document.getElementById("choose_point").classList.add("d-none");
+    }
+</script>
+</body>
+</html>

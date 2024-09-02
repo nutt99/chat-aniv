@@ -14,23 +14,16 @@
 </head>
 <body>
     <div class="mx-auto" id="container-pesan">
-            <div class="message message-incoming" id="chat1">
-                <p>Halo, bagaimana kabarmu hari ini?</p>
-                <span class="timestamp">09:30</span>
-            </div>
-            <div class="message message-outgoing d-none" id="container_out1">
-                <p id="outgoing1"></p>
-                <span class="timestamp">09:31</span>
-            </div>
+            
     </div>
 
     <div class="card m-5 fixed-bottom d-none" id="choose_point">
         <div class="card-body text-center">
             <h5 class="card-title">Pilih respon kamu!</h5>
-            <div class="message message-outgoing" onclick="setMessage1('Kabarku baik ^_^')">
+            <div class="message message-outgoing" onclick="setMessage1('Kabarku baik ^_^', 1)">
                 <p>Kabarku baik ^_^</p>
             </div>
-            <div class="message message-outgoing" onclick="setMessage1('Agak kurang nih hari ini T_T')">
+            <div class="message message-outgoing" onclick="setMessage1('Agak kurang nih hari ini T_T', 0)">
                 <p>Agak kurang nih hari ini T_T</p>
             </div>
         </div>
@@ -39,11 +32,23 @@
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/animate-check.js"></script>
 <script>
-    function setMessage1(msg) {
+    var feeling1 = "";
+    function setMessage1(msg, feel) {
+        feeling1 = feel;
+
+        document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-outgoing d-none" id="container_out1"><p id="outgoing1"></p><span class="timestamp">09:31</span></div>');
         document.getElementById("outgoing1").innerText = msg;
         document.getElementById("container_out1").classList.remove("d-none");
         document.getElementById("choose_point").classList.add("d-none");
+
+        if(feeling1 == '0'){
+            document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-incoming" id="chat2"><p>Gapapa ini cuman hari buruk aja, jangan terlalu dipikiri ya :D</p><span class="timestamp">09:32</span></div>');
+        }
+        else{
+            document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-incoming" id="chat2"><p>Baguslah kalau ini hari yang baik buat kamu, saya ikut senang mendengarnya :3</p><span class="timestamp">09:32</span></div>');
+        }
     }
+    var chat2 = document.getElementById("chat2")
 </script>
 </body>
 </html>

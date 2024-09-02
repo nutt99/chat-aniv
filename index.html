@@ -35,6 +35,21 @@
             <span class="timestamp">09:32</span>
         </div>
 
+        <div class="message message-incoming d-none" id="container_out2">
+            <p>Sebelumnya ada pesan loh buat kamu, mau baca gak isi nya apa?</p>
+            <span class="timestamp">09:33</span>
+        </div>
+
+        <div class="message message-outgoing d-none" id="container_out3">
+            <p id="outgoing2"></p>
+            <span class="timestamp">09:34</span>
+        </div>
+
+        <div class="message message-incoming d-none" id="container_out4">
+            <p>...</p>
+            <span class="timestamp">09:35</span>
+        </div>
+
     </div>
 
     <div class="card m-5 fixed-bottom d-none" id="choose_point">
@@ -49,11 +64,24 @@
         </div>
     </div>
 
+    <div class="card m-5 fixed-bottom d-none" id="choose_point2">
+        <div class="card-body text-center">
+            <h5 class="card-title">Pilih respon kamu!</h5>
+            <div class="message message-outgoing" onclick="setMessage2('Mau banget!')">
+                <p>Mau banget!</p>
+            </div>
+            <div class="message message-outgoing" onclick="setMessage2('Mauuuuuuuu.......')">
+                <p>Mauuuuuuuu.......</p>
+            </div>
+        </div>
+    </div>
+
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/animate-check.js"></script>
 <script>
     var feeling1 = "";
     const outg2 = document.getElementById("container_out1");
+    var container_out2
 
     function setMessage1(msg, feel) {
         feeling1 = feel;
@@ -65,12 +93,31 @@
 
         outg2.addEventListener('animationend', () => {
             if(feeling1 == '0'){
-            document.getElementById("chat2-1").classList.remove("d-none");
+                document.getElementById("chat2-1").classList.remove("d-none");
+                container_out2 = document.getElementById("chat2-1")
+                    container_out2.addEventListener('animationend', () => {
+                        document.getElementById("container_out2").classList.remove("d-none")
+                    })
             }
             if(feeling1 == '1'){
                 document.getElementById("chat2-2").classList.remove("d-none");
+                container_out2 = document.getElementById("chat2-2")
+                    container_out2.addEventListener('animationend', () => {
+                        document.getElementById("container_out2").classList.remove("d-none")        
+                    })
             }
         });
+    }
+
+    function setMessage2(msg) {
+        document.getElementById("choose_point2").classList.add("d-none");
+
+        document.getElementById("outgoing2").innerText = msg;
+        document.getElementById("container_out3").classList.remove("d-none")
+
+        document.getElementById("container_out3").addEventListener('animationend', () => {
+            document.getElementById("container_out4").classList.remove("d-none")
+        })
     }
 </script>
 </body>

@@ -14,7 +14,27 @@
 </head>
 <body>
     <div class="mx-auto" id="container-pesan">
-            
+
+        <div class="message message-incoming" id="chat1">
+            <p>Halo, bagaimana kabarmu hari ini?</p>
+            <span class="timestamp">09:30</span>
+        </div>
+        
+        <div class="message message-outgoing d-none" id="container_out1">
+            <p id="outgoing1"></p>
+            <span class="timestamp">09:31</span>
+        </div>
+
+        <div class="message message-incoming d-none" id="chat2-1">
+            <p>Gapapa ini cuman hari buruk aja, jangan terlalu dipikiri ya :D</p>
+            <span class="timestamp">09:32</span>
+        </div>
+
+        <div class="message message-incoming d-none" id="chat2-2">
+            <p>Baguslah kalau ini hari yang baik buat kamu, saya ikut senang mendengarnya :3</p>
+            <span class="timestamp">09:32</span>
+        </div>
+
     </div>
 
     <div class="card m-5 fixed-bottom d-none" id="choose_point">
@@ -33,22 +53,25 @@
 <script src="assets/animate-check.js"></script>
 <script>
     var feeling1 = "";
+    const outg2 = document.getElementById("container_out1");
+
     function setMessage1(msg, feel) {
         feeling1 = feel;
 
-        document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-outgoing d-none" id="container_out1"><p id="outgoing1"></p><span class="timestamp">09:31</span></div>');
         document.getElementById("outgoing1").innerText = msg;
+        document.getElementById("outgoing1").classList.remove("d-none");
         document.getElementById("container_out1").classList.remove("d-none");
         document.getElementById("choose_point").classList.add("d-none");
 
-        if(feeling1 == '0'){
-            document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-incoming" id="chat2"><p>Gapapa ini cuman hari buruk aja, jangan terlalu dipikiri ya :D</p><span class="timestamp">09:32</span></div>');
-        }
-        else{
-            document.getElementById("container-pesan").insertAdjacentHTML('beforeend', '<div class="message message-incoming" id="chat2"><p>Baguslah kalau ini hari yang baik buat kamu, saya ikut senang mendengarnya :3</p><span class="timestamp">09:32</span></div>');
-        }
+        outg2.addEventListener('animationend', () => {
+            if(feeling1 == '0'){
+            document.getElementById("chat2-1").classList.remove("d-none");
+            }
+            if(feeling1 == '1'){
+                document.getElementById("chat2-2").classList.remove("d-none");
+            }
+        });
     }
-    var chat2 = document.getElementById("chat2")
 </script>
 </body>
 </html>

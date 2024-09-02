@@ -5,14 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
     <title>1 Pesan!</title>
     <style>
         body {
             background-image: url("assets/download.jpeg");
         }
+        .sevillana-regular {
+        font-family: "Sevillana", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 36px;
+        }
+
     </style>
 </head>
 <body>
+
+    <button class="d-none" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="tomboll">
+        Launch static backdrop modal
+      </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered bg-transparent">
+        <div class="modal-content">
+            <div class="modal-body mx-auto">
+            <center>
+                <div class="col">
+                    <img class="" src="assets/c0f02f4d-removebg-preview.png" alt="">
+                    <p class="sevillana-regular">Pesan Telah Diterima</p>
+                    <p class="" style="font-size: 24px;">Ketuk untuk membuka</p>
+                </div>
+            </center>
+            </div>
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button> -->
+            </div>
+        </div>
+        </div>
+    </div>
+
     <div class="mx-auto" id="container-pesan">
 
         <div class="message message-incoming" id="chat1">
@@ -117,6 +153,9 @@
 
         document.getElementById("container_out3").addEventListener('animationend', () => {
             document.getElementById("container_out4").classList.remove("d-none")
+            document.getElementById("container_out4").addEventListener('animationend', () => {
+                document.getElementById("tomboll").click();
+            })
         })
     }
 </script>

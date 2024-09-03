@@ -23,14 +23,14 @@
     </style>
 </head>
 <body>
-
+<div id="top-path">
     <button class="d-none" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="tomboll">
         Launch static backdrop modal
       </button>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered bg-transparent">
+        <div class="modal-dialog modal-dialog-centered bg-transparent" onclick="rickrolled()" id="modalll">
         <div class="modal-content">
             <div class="modal-body mx-auto">
             <center>
@@ -42,12 +42,14 @@
             </center>
             </div>
             <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            
             <button type="button" class="btn btn-primary">Understood</button> -->
+            <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal" id="tutupp">Close</button>
             </div>
         </div>
         </div>
     </div>
+
 
     <div class="mx-auto" id="container-pesan">
 
@@ -111,6 +113,7 @@
             </div>
         </div>
     </div>
+    
 
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/animate-check.js"></script>
@@ -158,6 +161,12 @@
             })
         })
     }
+
+    function rickrolled() {
+        document.getElementById("tutupp").click();
+        window.location.replace("https://pesandariku.carrd.co/");
+    }
 </script>
+</div>
 </body>
 </html>
